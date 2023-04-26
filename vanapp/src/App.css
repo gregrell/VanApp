@@ -6,3 +6,23 @@
 body { 
   margin: 0;
 }
+
+
+.navbar{
+  width: 548px;
+  height: 111.62px;
+  background-color: #FFF7ED;
+
+}
+
+.homepage{
+  width: 548px;
+  height: 387px;
+
+}
+
+.homepage--image{
+  position: relative;
+  width: 548px;
+  height: 387px;
+}
