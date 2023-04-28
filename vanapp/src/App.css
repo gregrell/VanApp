@@ -2,27 +2,148 @@
   box-sizing: border-box;
 }
 
+a:-webkit-any-link {
+  text-decoration: none;
+  color: #4D4D4D;
+  cursor: pointer;
+}
+
+img{
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
 
 body { 
   margin: 0;
 }
 
+p{
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+
+.footer{
+  position: absolute;
+  width: 548.15px;
+  height: 74.75px;
+  background: #252525;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.footer--text{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 23px;
+  /* or 164% */
+
+  text-align: center;
+
+  color: #AAAAAA;
+
+  padding: 1vh 0px 0px 0px;
+
+
+}
 
 .navbar{
   width: 548px;
   height: 111.62px;
   background-color: #FFF7ED;
+  display: flex;
+  align-items: center;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.navbar--title{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 25.3531px;
+  line-height: 40px;  
+
+  margin-right: auto;
+  padding: 0px 0px 0px 20px;
+
+}
+
+.navbar--link{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 23px;
+  padding: 0px 25px 0px 0px;
 
 }
 
 .homepage{
   width: 548px;
   height: 387px;
-
 }
 
 .homepage--image{
   position: relative;
   width: 548px;
-  height: 387px;
+  height: 387px; 
+}
+
+.homepage--text{
+  position: absolute;
+  width: 494.33px;
+  height: 84px;
+  left: 26.91px;
+  top: 177.4px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 42px;
+  /* or 117% */
+
+
+  color: #FFFFFF;
+}
+
+.homepage--subtext{
+  position: absolute;
+  width: 494.33px;
+  height: 48px;
+  left: 26.91px;
+  top: 284.04px;
+  padding: 20px 0px 0px 0px;
+
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* or 150% */
+  color: #FFFFFF;
+}
+
+.homepage--button{
+  position: absolute;
+  width: 494.33px;
+  height: 49.83px;
+  left: 26.91px;
+  top: 383.7px;
+  margin: 20px auto;
+  border: none;
+  cursor: auto;
+
+
+  background: #FF8C38;
+  border-radius: 5px;
 }
