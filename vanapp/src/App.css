@@ -23,8 +23,85 @@ p{
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  /* or 138% */
+  color: #161616;
+  padding: 0px 20px;
 }
 
+h1{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  /* or 119% */  
+  
+  color: #161616;
+  padding: 10px 20px ;
+}
+
+h2{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  /* or 125% */
+
+
+  color: #161616;
+}
+
+
+.about{
+  width: 548.15px;
+  height: 800.51px;
+  background: #FFF7ED;
+}
+
+.about--square{
+  width: 494px;
+  height: 198px;
+  margin: 55px 27px;  
+  background: #FFCC8D;
+  border-radius: 5px;
+}
+
+.about--square--text{
+  position: absolute;
+  width: 420px;
+  height: 60px;
+  padding: 0px 20px; 
+
+}
+
+.about--square--button{
+  position: relative;
+  width: 174px;
+  height: 49px;
+  top: 120px;
+  left: 55px;;
+  
+  color: #FFFFFF;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15.9462px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  align-items: center;
+
+  background: #161616;
+  border-radius: 10px;
+  border: none;
+}
 
 .footer{
   position: absolute;
@@ -49,8 +126,6 @@ p{
   color: #AAAAAA;
 
   padding: 1vh 0px 0px 0px;
-
-
 }
 
 .navbar{
