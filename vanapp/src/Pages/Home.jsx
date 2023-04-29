@@ -1,16 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Nav from '../Components/Nav'
 import backgroundimage from '.././Images/HomePageBackground.png'
 
 export default function Home(){
     return(
-        <div>
-            <nav className='navbar'>
-                <p className='navbar--title'>#VANLIFE</p>
-                <Link to="/about" className='navbar--link'>About</Link>
-                <Link to="/" className='navbar--link'>Vans</Link>            
-            </nav>
-
+        <div>            
+            <Nav/>
             <div className='homepage'>
                 <img className='homepage--image' src={backgroundimage}/>
                 <p className='homepage--text'>You got the travel plans, we got the travel vans.</p>
