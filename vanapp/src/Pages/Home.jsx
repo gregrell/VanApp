@@ -1,6 +1,8 @@
 import React from 'react';
 import Nav from '../Components/Nav'
 import backgroundimage from '.././Images/HomePageBackground.png'
+import Footer from '.././Components/Footer'
+
 
 export default function Home(){
     return(
@@ -13,12 +15,7 @@ export default function Home(){
                 <button className='homepage--button'>Find your van</button>
             </div>
 
-            <div className='footer'>
-                <p className='footer--text'>Ⓒ 2022 #VANLIFE</p>
-            </div>
-
-
-
+            <Footer/>
         </div>
     )
 }

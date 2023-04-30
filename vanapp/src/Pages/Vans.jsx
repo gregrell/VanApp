@@ -1,6 +1,10 @@
 import React from "react";
 import Nav from '../Components/Nav'
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
+import Footer from '.././Components/Footer'
+
+
 
 
 
@@ -20,7 +24,6 @@ export default function Vans(){
         })
         .then(data=>{
             setVansdata(data.vans)
-            console.log(data.vans)
         })
         .catch(error=>{
             console.error("Error fetching data", error)
@@ -41,12 +44,12 @@ export default function Vans(){
 
         const vansList = vansdata.map((instancedata, index)=>{
             return(
-                <div className="vancard grid-item">
+                <Link to={`/vans/${instancedata.id}`} className="vancard grid-item" key={instancedata.id}>
                     <img src={instancedata.imageUrl} className="vancard--image"></img>
                     <div className="vancard--content">
-                        <div style={{display:"flex", "flex-direction":"row"}}>
-                            <p className="vancard--text" style={{"margin-right":"auto"}}>{instancedata.name}</p>                    
-                            <div style={{display:"flex","flex-direction":"column", margin:0}}>
+                        <div style={{display:"flex", fleDirection:"row"}}>
+                            <p className="vancard--text" style={{marginRight:"auto"}}>{instancedata.name}</p>                    
+                            <div style={{display:"flex",flexDirection:"column", margin:0}}>
                                 <p className="vancard--text">${instancedata.price}</p>
                                 <p className="vancard--day">/day</p>
                             </div>
@@ -60,7 +63,7 @@ export default function Vans(){
                             {instancedata.type}
                         </div>
                     </div>
-                </div>
+                </Link>
             )
 
         })
@@ -76,6 +79,7 @@ export default function Vans(){
                 {!loading && vansList }
                 {loading && <p>LOADING...</p>}
             </div>
+            <Footer/>
            
             
         </div>

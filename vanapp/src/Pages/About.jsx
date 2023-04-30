@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from '../Components/Nav'
 import backgroundimage from '.././Images/image 54.png'
+import Footer from '.././Components/Footer'
 
 
 
@@ -22,9 +23,7 @@ export default function About(){
                 </div>                
             </div>
 
-            <div className='footer'>
-                 <p className='footer--text'>Ⓒ 2022 #VANLIFE</p>
-            </div>
+            <Footer/>
 
            
 
