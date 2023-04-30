@@ -1,5 +1,8 @@
 * {
   box-sizing: border-box;
+  user-select: none;
+  -webkit-user-drag: none;
+  max-width: 548px;;
 }
 
 a:-webkit-any-link {
@@ -13,6 +16,8 @@ img{
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
+  padding: 0px;
+  margin: 0px;
 }
 
 body { 
@@ -31,7 +36,7 @@ p{
   line-height: 22px;
   /* or 138% */
   color: #161616;
-  padding: 0px 20px;
+  padding: 0px;
 }
 
 h1{
@@ -68,7 +73,7 @@ h2{
 .about--square{
   width: 494px;
   height: 198px;
-  margin: 55px 27px;  
+  margin: 0px 27px;  
   background: #FFCC8D;
   border-radius: 5px;
 }
@@ -149,6 +154,9 @@ h2{
   margin-right: auto;
   padding: 0px 0px 0px 20px;
 
+  user-select: none;
+  -webkit-user-drag: none;
+
 }
 
 .navbar--link{
@@ -158,6 +166,9 @@ h2{
   font-size: 16px;
   line-height: 23px;
   padding: 0px 25px 0px 0px;
+
+  user-select: none;
+  -webkit-user-drag: none;
 
 }
 
@@ -221,4 +232,84 @@ h2{
 
   background: #FF8C38;
   border-radius: 5px;
+}
+
+.vancard{
+  width: 229.23px;
+  height: 309.96px;
+  padding: 0px;
+  margin: 0px 0px 0px;
+  
+}
+
+.vancard--content{
+  display: flex;
+  flex-direction: column;
+}
+
+.vancard--text{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  /* identical to box height, or 158% */
+  color: #161616;
+  padding: 0px;
+  margin: 0 0 10px 0px;  
+}
+
+.vancard--image{
+  width:229.23px;
+  height:229.23px; 
+  border-radius: 5px;
+}
+
+.vancard--day{
+  margin: -20px 0px 0px 0px;
+  font-size: 0.80em;
+}
+
+.vancard--type{
+  width: 85.71px;
+  height: 33.89px;  
+  border-radius: 6px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 32px;
+  /* or 198% */
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #FFEAD0;
+
+}
+
+.background--orange{
+  background-color: #E17654;
+}
+
+.background--green{
+  background-color: #115E59
+}
+
+.background--black{
+  background-color: #161616;
+}
+
+
+.vanspage{
+  background: #FFF7ED;
+}
+
+.vansgrid{
+  margin: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 12px;
 }
