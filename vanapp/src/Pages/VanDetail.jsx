@@ -3,6 +3,8 @@ import Nav from "../Components/Nav";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Footer from '.././Components/Footer'
+import VanType from '.././Components/VanType'
+
 
 
 
@@ -10,7 +12,6 @@ import Footer from '.././Components/Footer'
 export default function VanDetail(props){
 
     const params = useParams()
-    console.log(params)
     const [vandata, setVandata] = useState({})
     const [loading, setLoading] = useState(true)
 
@@ -32,7 +33,7 @@ export default function VanDetail(props){
         .finally(()=>{
             setLoading(false)
         })
-    }, [])
+    }, [params.id])
 
  /* 
         description:"The Modest Explorer is a van designed to get you out of the house and into nature. This beauty is equipped with solar panels, a composting toilet, a water tank and kitchenette. The idea is that you can pack up your home and escape for a weekend or even longer!"
@@ -46,12 +47,26 @@ export default function VanDetail(props){
 
     return(
         <div>
+
             <Nav/>
+
+            {!loading ? (
+
             <div className="vanDetail">
                 <img src={vandata.imageUrl} className="vanDetail--image"/>
-            </div>
+                <VanType type={vandata.type}/>
+                <h1 className="vanDetail--text">{vandata.name}</h1>
+                <div className="vanDetail--pricecontainer">
+                    <h2>${vandata.price}</h2><p>/day</p>
+                </div>
+                <p>{vandata.description}</p>
+                <div className="vanDetail--button">
+                    Rent this van
+                </div>
+            </div> 
+            ) : <div><p>Loading...</p></div>}
 
-            <Footer/>
+            <Footer/> 
 
         </div>
     )

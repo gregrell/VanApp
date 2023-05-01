@@ -3,6 +3,7 @@ import Nav from '../Components/Nav'
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import Footer from '.././Components/Footer'
+import VanType from '.././Components/VanType'
 
 
 
@@ -55,13 +56,7 @@ export default function Vans(){
                             </div>
                         </div>
                         
-                        <div className={`vancard--type 
-                            ${instancedata.type=="simple" ? "background--orange": ""} 
-                            ${instancedata.type=="rugged" ? "background--green": ""}
-                            ${instancedata.type=="luxury" ? "background--black": ""}                            
-                            `}>    
-                            {instancedata.type}
-                        </div>
+                        <VanType type={instancedata.type}/>
                     </div>
                 </Link>
             )

@@ -313,3 +313,46 @@ h2{
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 12px;
 }
+
+.vanDetail{
+  padding: 25px;
+
+}
+
+.vanDetail--image{
+  width: 100%;
+  margin: 20px 0px 40px 0px;
+
+}
+
+.vanDetail--text{
+  padding: 0;
+  margin: 10 0;
+}
+
+.vanDetail--pricecontainer{
+  display: flex;
+  align-items: center;
+}
+
+.vanDetail--button{
+  width: 494.33px;
+  height: 50px;
+  background-color: #FF8C38;
+  border-radius: 5px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+  /* or 176% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  color: #FFFFFF;
+
+}
