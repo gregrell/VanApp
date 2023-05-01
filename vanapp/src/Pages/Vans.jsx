@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from '../Components/Nav'
+import Header from '../Components/Header'
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import Footer from '.././Components/Footer'
@@ -65,7 +65,7 @@ export default function Vans(){
 
     return(
         <div className="vanspage">
-            <Nav/>
+            <Header/>
             <div>
                 <p>explore our van options stuff</p>
             </div>

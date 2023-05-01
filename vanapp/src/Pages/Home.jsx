@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from '../Components/Nav'
+import Header from '../Components/Header'
 import backgroundimage from '.././Images/HomePageBackground.png'
 import Footer from '.././Components/Footer'
 
@@ -7,7 +7,7 @@ import Footer from '.././Components/Footer'
 export default function Home(){
     return(
         <div>            
-            <Nav/>
+            <Header/>
             <div className='homepage'>
                 <img className='homepage--image' src={backgroundimage}/>
                 <p className='homepage--text'>You got the travel plans, we got the travel vans.</p>

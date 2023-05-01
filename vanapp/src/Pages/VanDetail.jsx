@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../Components/Nav";
+import Header from "../Components/Header";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Footer from '.././Components/Footer'
@@ -48,7 +48,7 @@ export default function VanDetail(props){
     return(
         <div>
 
-            <Nav/>
+            <Header/>
 
             {!loading ? (
 
