@@ -1,8 +1,6 @@
 import React from "react";
-import Header from '../Components/Header'
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import Footer from '.././Components/Footer'
 import VanType from '.././Components/VanType'
 
 
@@ -65,17 +63,11 @@ export default function Vans(){
 
     return(
         <div className="vanspage">
-            <Header/>
-            <div>
-                <p>explore our van options stuff</p>
-            </div>
-
+            
             <div className="vansgrid">
                 {!loading && vansList }
                 {loading && <p>LOADING...</p>}
-            </div>
-            <Footer/>
-           
+            </div>          
             
         </div>
     )

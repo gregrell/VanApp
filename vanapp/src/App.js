@@ -6,6 +6,7 @@ import About from './Pages/About';
 import Home from './Pages/Home';
 import Vans from './Pages/Vans';
 import VanDetail from './Pages/VanDetail';
+import Layout from './Components/Layout';
 
 import "./server"
 
@@ -17,10 +18,12 @@ function App() {
     <div className="App">
        <BrowserRouter> 
           <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/about" element={<About/>}/>
-            <Route path="/vans" element={<Vans/>}/>
-            <Route path="/vans/:id" element={<VanDetail/>}/>
+            <Route element={<Layout/>}>
+              <Route path="/" element={<Home/>}/>
+              <Route path="/about" element={<About/>}/>
+              <Route path="/vans" element={<Vans/>}/>
+              <Route path="/vans/:id" element={<VanDetail/>}/>
+            </Route>
           </Routes>
         </BrowserRouter>
     </div>

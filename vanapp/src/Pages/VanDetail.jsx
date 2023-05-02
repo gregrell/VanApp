@@ -1,8 +1,6 @@
 import React from "react";
-import Header from "../Components/Header";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Footer from '.././Components/Footer'
 import VanType from '.././Components/VanType'
 
 
@@ -46,13 +44,10 @@ export default function VanDetail(props){
 
 
     return(
-        <div>
-
-            <Header/>
-
+        <div className="vanDetail">
             {!loading ? (
 
-            <div className="vanDetail">
+            <div >
                 <img src={vandata.imageUrl} className="vanDetail--image"/>
                 <VanType type={vandata.type}/>
                 <h1 className="vanDetail--text">{vandata.name}</h1>
@@ -66,7 +61,6 @@ export default function VanDetail(props){
             </div> 
             ) : <div><p>Loading...</p></div>}
 
-            <Footer/> 
 
         </div>
     )
