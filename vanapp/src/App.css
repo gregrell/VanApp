@@ -17,10 +17,13 @@ img{
   -o-user-drag: none;
   padding: 0px;
   margin: 0px;
+  border-radius: 5px;
 }
 
 body { 
   margin: 0;
+  background: #FFF7ED;
+
 }
 
 p{
@@ -62,6 +65,20 @@ h2{
   color: #161616;
 }
 
+
+
+ul{
+  text-decoration: none;
+  list-style: none;
+  font-family: 'Inter';
+  margin: 5px;
+  padding: 10px;
+}
+
+.bold{
+  font-size: 20px;
+  font-weight: bold;
+}
 
 .about{
   width: 548.15px;
@@ -132,6 +149,18 @@ h2{
   padding: 1vh 0px 0px 0px;
 }
 
+.host--vancard{
+  display: flex;
+  font-family: Inter;
+  text-decoration: none;
+  width: 494px;
+  height: 102px;
+  background-color: #FFFFFF;
+  margin: 15px 25px;
+  padding: 10px;
+}
+
+
 .navbar{
   width: 548px;
   height: 111.62px;
@@ -164,6 +193,7 @@ h2{
   font-family: 'Inter';
   font-style: normal;
   text-decoration: none;
+
   font-weight: 600;
   font-size: 16px;
   line-height: 23px;
@@ -251,7 +281,7 @@ h2{
   height: 309.96px;
   padding: 0px;
   margin: 0px 0px 0px;
-  
+  text-decoration: none;  
 }
 
 .vancard--content{
