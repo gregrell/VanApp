@@ -149,6 +149,11 @@ ul{
   padding: 1vh 0px 0px 0px;
 }
 
+
+.host--navbar{
+  padding: 0px 0px 0px 20px;
+}
+
 .host--vancard{
   display: flex;
   font-family: Inter;
@@ -159,6 +164,8 @@ ul{
   margin: 15px 25px;
   padding: 10px;
 }
+
+
 
 
 .navbar{
@@ -177,6 +184,7 @@ ul{
 .navbar--title{
   font-family: 'Inter';
   font-style: normal;
+  text-decoration: none;
   font-weight: 900;
   font-size: 25.3531px;
   line-height: 40px;  
@@ -197,7 +205,7 @@ ul{
   font-weight: 600;
   font-size: 16px;
   line-height: 23px;
-  padding: 0px 5px 0px 0px;
+  padding: 0px 15px 0px 0px;
 
   user-select: none;
   -webkit-user-drag: none;
@@ -208,7 +216,7 @@ ul{
   font-weight: 600;
   font-size: 16px;
   line-height: 23px;
-  padding: 0px 5px 0px 0px;
+  padding: 0px 15px 0px 0px;
 
   user-select: none;
   -webkit-user-drag: none;

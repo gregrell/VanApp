@@ -6,7 +6,7 @@ import { Outlet, NavLink } from "react-router-dom";
 export default function HostLayout(){
     return(
         <div>
-            <nav>
+            <nav className="host--navbar">
                 <NavLink to="/host" end className={({isActive})=> isActive ? "navbar--link--active" : "navbar--link"}>Dashboard</NavLink>          
                 <NavLink to="/host/income" className={({isActive})=> isActive ? "navbar--link--active" : "navbar--link"}>Income</NavLink>          
                 <NavLink to="/host/vans" className={({isActive})=> isActive ? "navbar--link--active" : "navbar--link"}>Vans</NavLink>          
