@@ -43,16 +43,13 @@ export default function NavVans(){
 
     const vansList = vansdata.map((instancedata, index)=>{
         return(
-            <>
-            {loading && <p>Loading</p>}          
-            {!loading && <HostVan
-                id={instancedata.id}
+            <HostVan
                 key={instancedata.id}
+                id={instancedata.id}
                 imageUrl={instancedata.imageUrl}
                 name={instancedata.name}
                 price={instancedata.price}
-                />}          
-            </>
+                />                    
 
         )
     })
@@ -61,9 +58,11 @@ export default function NavVans(){
 
 
     return(
-        <div>
-            <h1>Your Listed Vans</h1>
-            {vansList}
-        </div>
+        <>  {loading && <p>Loading</p>}
+            {!loading && <div>
+                <h1>Your Listed Vans</h1>
+                {vansList}
+            </div>}
+        </>
     )
 }

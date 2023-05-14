@@ -78,7 +78,7 @@ export default function HostVanDetail(){
                     </ul>
                 </div>
                 <nav>
-                    <NavLink to="details" end className={({isActive})=> isActive ? "navbar--link--active" : "navbar--link"}>Details</NavLink>          
+                    <NavLink to="." end className={({isActive})=> isActive ? "navbar--link--active" : "navbar--link"}>Details</NavLink>          
                     <NavLink to="pricing" className={({isActive})=> isActive ? "navbar--link--active" : "navbar--link"}>Pricing</NavLink>          
                     <NavLink to="photos" className={({isActive})=> isActive ? "navbar--link--active" : "navbar--link"}>Photos</NavLink>          
                 </nav>
