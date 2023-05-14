@@ -82,7 +82,7 @@ export default function HostVanDetail(){
                     <NavLink to="pricing" className={({isActive})=> isActive ? "navbar--link--active" : "navbar--link"}>Pricing</NavLink>          
                     <NavLink to="photos" className={({isActive})=> isActive ? "navbar--link--active" : "navbar--link"}>Photos</NavLink>          
                 </nav>
-                <Outlet/>
+                <Outlet context={vandata}/>
             </div>
         </>}
         </>

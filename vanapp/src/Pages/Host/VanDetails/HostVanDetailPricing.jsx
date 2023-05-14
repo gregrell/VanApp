@@ -1,14 +1,16 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 
 export default function HostVanDetailPricing(props){
 
-    const params = useParams()
+    const currentVan  = useOutletContext()
+
+
 
     return(
         <>
-            <p>Host Van Detail Pricing {params.id}</p>
+            <p>Host Van Detail Pricing {currentVan.name}</p>
         </>
     )
 }
