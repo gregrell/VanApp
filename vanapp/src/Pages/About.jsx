@@ -1,14 +1,11 @@
 import React from "react";
-import Nav from '../Components/Nav'
 import backgroundimage from '.././Images/image 54.png'
-import Footer from '.././Components/Footer'
 
 
 
 export default function About(){
     return(
         <div>
-            <Nav/>
             <div className='about'>
             <img src={backgroundimage}/>
                 <h1>Don’t squeeze in a sedan when you could relax in a van.</h1>
@@ -23,7 +20,6 @@ export default function About(){
                 </div>                
             </div>
 
-            <Footer/>
 
            
 

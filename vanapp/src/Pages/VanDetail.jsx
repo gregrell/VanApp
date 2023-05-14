@@ -1,8 +1,6 @@
 import React from "react";
-import Nav from "../Components/Nav";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Footer from '.././Components/Footer'
 import VanType from '.././Components/VanType'
 
 
@@ -48,7 +46,6 @@ export default function VanDetail(props){
     return(
         <div>
 
-            <Nav/>
 
             {!loading ? (
 
@@ -66,7 +63,6 @@ export default function VanDetail(props){
             </div> 
             ) : <div><p>Loading...</p></div>}
 
-            <Footer/> 
 
         </div>
     )

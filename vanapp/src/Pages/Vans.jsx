@@ -1,8 +1,6 @@
 import React from "react";
-import Nav from '../Components/Nav'
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import Footer from '.././Components/Footer'
 import VanType from '.././Components/VanType'
 
 
@@ -65,7 +63,6 @@ export default function Vans(){
 
     return(
         <div className="vanspage">
-            <Nav/>
             <div>
                 <p>explore our van options stuff</p>
             </div>
@@ -74,7 +71,6 @@ export default function Vans(){
                 {!loading && vansList }
                 {loading && <p>LOADING...</p>}
             </div>
-            <Footer/>
            
             
         </div>
