@@ -50,7 +50,7 @@ export default function VanDetail(props){
             {!loading ? (
 
             <div className="vanDetail">
-                <img src={vandata.imageUrl} className="vanDetail--image"/>
+                <img src={vandata.imageUrl} className="vanDetail--image" alt=""/>
                 <VanType type={vandata.type}/>
                 <h1 className="vanDetail--text">{vandata.name}</h1>
                 <div className="vanDetail--pricecontainer">

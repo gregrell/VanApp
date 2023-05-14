@@ -44,7 +44,7 @@ export default function NavVans(){
     const vansList = vansdata.map((instancedata, index)=>{
         return(
             <Link to={`/host/vans/${instancedata.id}`} key={instancedata.id} className="host--vancard">
-                <img src={instancedata.imageUrl}/>
+                <img src={instancedata.imageUrl} alt=""/>
                 <div style={{display:"flex", flexDirection:"column"}}>
                     <ul>    
                         <li className="bold">{instancedata.name}</li>
