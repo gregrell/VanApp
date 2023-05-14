@@ -149,6 +149,9 @@ ul{
   padding: 1vh 0px 0px 0px;
 }
 
+.fontsize-26{
+  font-size: 26px;
+}
 
 .host--navbar{
   padding: 0px 0px 0px 20px;
@@ -284,6 +287,29 @@ ul{
   border-radius: 5px;
 }
 
+.HostVanDetail{
+  height: 499px;
+  width: 496px;
+  background-color: #FFFFFF;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.HostVanDetailImage{
+  height: 157.9px;
+  width: 160.15px;
+}
+
+.HostVanDetailHeader{
+  display: flex;
+}
+
+.link--back{
+  margin: 0px 0px 0px 50px;
+  font-weight: bold;
+  
+}
+
 .vancard{
   width: 229.23px;
   height: 309.96px;
@@ -409,3 +435,4 @@ ul{
   color: #FFFFFF;
 
 }
+

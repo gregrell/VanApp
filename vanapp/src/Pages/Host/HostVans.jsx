@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
 import HostVan from "../../Components/HostVan";
 
 
@@ -44,14 +43,15 @@ export default function NavVans(){
 
     const vansList = vansdata.map((instancedata, index)=>{
         return(
-            <>          
-            <HostVan
+            <>
+            {loading && <p>Loading</p>}          
+            {!loading && <HostVan
                 id={instancedata.id}
                 key={instancedata.id}
                 imageUrl={instancedata.imageUrl}
                 name={instancedata.name}
                 price={instancedata.price}
-                />          
+                />}          
             </>
 
         )

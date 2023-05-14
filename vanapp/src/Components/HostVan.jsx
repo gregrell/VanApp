@@ -9,7 +9,7 @@ export default function HostVan(props){
                 <img src={props.imageUrl} alt=""/>
                 <div style={{display:"flex", flexDirection:"column"}}>
                     <ul>    
-                        <li className="bold">{props.name}</li>
+                        <li className="bold">{props.name} </li>
                         <li>${props.price}/day</li>
                     </ul>
                 </div>
