@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import HostVan from "../../Components/HostVan";
 
 
 
@@ -43,16 +44,15 @@ export default function NavVans(){
 
     const vansList = vansdata.map((instancedata, index)=>{
         return(
-            <Link to={`/host/vans/${instancedata.id}`} key={instancedata.id} className="host--vancard">
-                <img src={instancedata.imageUrl} alt=""/>
-                <div style={{display:"flex", flexDirection:"column"}}>
-                    <ul>    
-                        <li className="bold">{instancedata.name}</li>
-                        <li>${instancedata.price}/day</li>
-                    </ul>
-                </div>
-
-            </Link>
+            <>          
+            <HostVan
+                id={instancedata.id}
+                key={instancedata.id}
+                imageUrl={instancedata.imageUrl}
+                name={instancedata.name}
+                price={instancedata.price}
+                />          
+            </>
 
         )
     })
