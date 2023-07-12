@@ -14,7 +14,6 @@ export default function Vans(){
     const [loading, setLoading] = useState(true)
     
     const typeFilter = searchParams.get('type')
-    console.log(typeFilter)
 
     useEffect(()=>{
         fetch('/api/vans')
@@ -72,10 +71,38 @@ export default function Vans(){
             <div>
                 <h2>Explore our van options</h2>
                 <div className='flex pad-10'>
-                <Link to='?type=simple' className="link"><VanType color={'filter'} type={'Simple'}/></Link>
+                {/* <Link to='?type=simple' className="link"><VanType color={'filter'} type={'Simple'}/></Link>
                 <Link to='?type=rugged' className="link"><VanType color={'filter'} type={'Rugged'}/></Link>
                 <Link to='?type=luxury' className="link"><VanType color={'filter'} type={'Luxury'}/></Link>
-                <Link to='.'>Clear Filters</Link>
+                <Link to='.'>Clear Filters</Link> */}
+
+                    <Link   to='' 
+                            className="link" 
+                            onClick={(event)=>{
+                                event.preventDefault()
+                                setSearchParams('?type=simple')}}>
+                                    <VanType color={'filter'} type={'Simple'}/>
+                    </Link>
+                    <Link   to='' 
+                            className="link" 
+                            onClick={(event)=>{
+                                event.preventDefault()
+                                setSearchParams('?type=rugged')}}>
+                                    <VanType color={'filter'} type={'Rugged'}/>
+                    </Link>
+                    <Link   to='' 
+                            className="link" 
+                            onClick={(event)=>{
+                                event.preventDefault()
+                                setSearchParams('?type=luxury')}}>
+                                    <VanType color={'filter'} type={'Luxury'}/>
+                    </Link>
+                    <Link   to='' 
+                            className="" 
+                            onClick={(event)=>{
+                                event.preventDefault()
+                                setSearchParams('')}}>Clear filters
+                    </Link>
 
                 </div>
                 
