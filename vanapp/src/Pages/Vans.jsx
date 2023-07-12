@@ -76,6 +76,9 @@ export default function Vans(){
                 <Link to='?type=luxury' className="link"><VanType color={'filter'} type={'Luxury'}/></Link>
                 <Link to='.'>Clear Filters</Link> */}
 
+                    {/* here is an example of setting search parameters programatically, disabling the link default event action
+                    and in place using the onclick event to set search parameters  */}
+
                     <Link   to='' 
                             className="link" 
                             onClick={(event)=>{
