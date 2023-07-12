@@ -124,6 +124,11 @@ ul{
   border: none;
 }
 
+.flex{
+  display: flex;
+  justify-content: space-between;
+}
+
 .footer{
   position: absolute;
   width: 548.15px;
@@ -304,10 +309,22 @@ ul{
   display: flex;
 }
 
+.link{
+  text-decoration: none;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+
 .link--back{
   margin: 0px 0px 0px 50px;
   font-weight: bold;
   
+}
+
+.pad-10{
+  padding: 10px;
 }
 
 .vancard{
@@ -378,6 +395,11 @@ ul{
   background-color: #161616;
 }
 
+.background--beige{
+  background-color:  #FFEAD0;
+  color: black;
+}
+
 
 .vanspage{
   background-color: #FFF7ED;
@@ -389,7 +411,8 @@ ul{
 .vansgrid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 12px;
+  grid-gap: 15px;
+  place-items: center;
 }
 
 .vanDetail{

@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import VanType from '.././Components/VanType'
 
 
@@ -9,9 +9,12 @@ import VanType from '.././Components/VanType'
 
 export default function Vans(){
 
+    const [searchParams, setSearchParams] = useSearchParams()
     const [vansdata, setVansdata] = useState([])
     const [loading, setLoading] = useState(true)
     
+    const typeFilter = searchParams.get('type')
+    console.log(typeFilter)
 
     useEffect(()=>{
         fetch('/api/vans')
@@ -21,7 +24,7 @@ export default function Vans(){
             }
             throw response;    
         })
-        .then(data=>{
+        .then(data=>{           
             setVansdata(data.vans)
         })
         .catch(error=>{
@@ -41,7 +44,9 @@ export default function Vans(){
         type:"simple"
         */ 
 
-        const vansList = vansdata.map((instancedata, index)=>{
+        /* Here is a good example on how to filter an array of things you want to display in a mapping. */
+        const displayedVans = typeFilter ?  vansdata.filter(van=>{return(van.type.toLowerCase()===typeFilter.toLowerCase())}) : vansdata
+        const vansList = displayedVans.map((instancedata, index)=>{
             return(
                 <Link to={`/vans/${instancedata.id}`} className="vancard grid-item" key={instancedata.id}>
                     <img src={instancedata.imageUrl} className="vancard--image" alt="vanpic"></img>
@@ -54,7 +59,8 @@ export default function Vans(){
                             </div>
                         </div>
                         
-                        <VanType type={instancedata.type}/>
+                        <VanType type={instancedata.type}
+                                 color={instancedata.type}/>
                     </div>
                 </Link>
             )
@@ -64,7 +70,15 @@ export default function Vans(){
     return(
         <div className="vanspage">
             <div>
-                <p>explore our van options stuff</p>
+                <h2>Explore our van options</h2>
+                <div className='flex pad-10'>
+                <Link to='?type=simple' className="link"><VanType color={'filter'} type={'Simple'}/></Link>
+                <Link to='?type=rugged' className="link"><VanType color={'filter'} type={'Rugged'}/></Link>
+                <Link to='?type=luxury' className="link"><VanType color={'filter'} type={'Luxury'}/></Link>
+                <Link to='.'>Clear Filters</Link>
+
+                </div>
+                
             </div>
 
             <div className="vansgrid">
