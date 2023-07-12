@@ -80,28 +80,28 @@ export default function Vans(){
                             className="link" 
                             onClick={(event)=>{
                                 event.preventDefault()
-                                setSearchParams('?type=simple')}}>
+                                setSearchParams({type:'simple'})}}>
                                     <VanType color={'filter'} type={'Simple'}/>
                     </Link>
                     <Link   to='' 
                             className="link" 
                             onClick={(event)=>{
                                 event.preventDefault()
-                                setSearchParams('?type=rugged')}}>
+                                setSearchParams({type:'rugged'})}}>
                                     <VanType color={'filter'} type={'Rugged'}/>
                     </Link>
                     <Link   to='' 
                             className="link" 
                             onClick={(event)=>{
                                 event.preventDefault()
-                                setSearchParams('?type=luxury')}}>
+                                setSearchParams({type:'luxury'})}}>
                                     <VanType color={'filter'} type={'Luxury'}/>
                     </Link>
                     <Link   to='' 
                             className="" 
                             onClick={(event)=>{
                                 event.preventDefault()
-                                setSearchParams('')}}>Clear filters
+                                setSearchParams({})}}>Clear filters
                     </Link>
 
                 </div>
