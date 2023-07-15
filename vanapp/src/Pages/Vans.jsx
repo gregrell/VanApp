@@ -47,7 +47,7 @@ export default function Vans(){
         const displayedVans = typeFilter ?  vansdata.filter(van=>{return(van.type.toLowerCase()===typeFilter.toLowerCase())}) : vansdata
         const vansList = displayedVans.map((instancedata, index)=>{
             return(
-                <Link to={`/vans/${instancedata.id}`} className="vancard grid-item" key={instancedata.id}>
+                <Link to={`${instancedata.id}`} className="vancard grid-item" key={instancedata.id}>
                     <img src={instancedata.imageUrl} className="vancard--image" alt="vanpic"></img>
                     <div className="vancard--content">
                         <div style={{display:"flex", fleDirection:"row"}}>
@@ -66,6 +66,12 @@ export default function Vans(){
 
         })
 
+        function handleFilterClick(filterTypeString){
+            setSearchParams({type:filterTypeString})
+
+        }
+        
+
     return(
         <div className="vanspage">
             <div>
@@ -77,35 +83,23 @@ export default function Vans(){
                 <Link to='.'>Clear Filters</Link> */}
 
                     {/* here is an example of setting search parameters programatically, disabling the link default event action
-                    and in place using the onclick event to set search parameters  */}
+                    and in place using the onclick event to set search parameters. This was changed to take in a click handling function
+                    as prop. */}
 
-                    <Link   to='' 
-                            className="link" 
-                            onClick={(event)=>{
-                                event.preventDefault()
-                                setSearchParams({type:'simple'})}}>
-                                    <VanType color={'filter'} type={'Simple'}/>
-                    </Link>
-                    <Link   to='' 
-                            className="link" 
-                            onClick={(event)=>{
-                                event.preventDefault()
-                                setSearchParams({type:'rugged'})}}>
-                                    <VanType color={'filter'} type={'Rugged'}/>
-                    </Link>
-                    <Link   to='' 
-                            className="link" 
-                            onClick={(event)=>{
-                                event.preventDefault()
-                                setSearchParams({type:'luxury'})}}>
-                                    <VanType color={'filter'} type={'Luxury'}/>
-                    </Link>
-                    <Link   to='' 
+                   
+                    <VanType color={'filter'} type={'Simple'} handleClickFunction={()=>handleFilterClick('simple')}/>
+                    <VanType color={'filter'} type={'Rugged'} handleClickFunction={()=>handleFilterClick('rugged')}/>                    
+                    <VanType color={'filter'} type={'Luxury'} handleClickFunction={()=>handleFilterClick('luxury')}/>
+                    
+                    {/* Conditonally render the clear filters link by looking to see if the search parameters size is greater than 0
+                    if its zero then render a HIDDEN 'clear filters' text so the filter buttons do not readjust */}
+
+                    {searchParams.size!=0 ? (<Link   to='' 
                             className="" 
                             onClick={(event)=>{
                                 event.preventDefault()
                                 setSearchParams({})}}>Clear filters
-                    </Link>
+                    </Link>) : <span style={{visibility:"hidden"}}>Clear filters</span>}
 
                 </div>
                 

@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
+
 import VanType from '.././Components/VanType'
 
 
@@ -48,10 +50,12 @@ export default function VanDetail(props){
 
 
             {!loading ? (
-
+            
             <div className="vanDetail">
+                <Link to=".." relative="path" className="link--back">&larr; back to vans</Link>
                 <img src={vandata.imageUrl} className="vanDetail--image" alt=""/>
-                <VanType type={vandata.type}/>
+                <VanType type={vandata.type}
+                        color={vandata.type}/>
                 <h1 className="vanDetail--text">{vandata.name}</h1>
                 <div className="vanDetail--pricecontainer">
                     <h2>${vandata.price}</h2><p>/day</p>
