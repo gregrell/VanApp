@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams,useLocation } from 'react-router-dom';
 import VanType from '.././Components/VanType'
+import { type } from "@testing-library/user-event/dist/type";
 
 
 
@@ -51,8 +52,10 @@ export default function Vans(){
                 <Link   to={`${instancedata.id}`} 
                         className="vancard grid-item" 
                         key={instancedata.id}
-                        state={{search: searchParams.toString()}} /* This is how to pass 'information' to the new page from this page. 
-                        It has to retrieve it using useLocation hook */
+                        state={{search: location.search.toString(),
+                                type: typeFilter }} /* This is how to pass 'information' to the new page from this page. 
+                        It has to retrieve it using useLocation hook. the propery must be called STATE */
+                        type={typeFilter}
                         >
                     <img src={instancedata.imageUrl} className="vancard--image" alt="vanpic"></img>
                     <div className="vancard--content">

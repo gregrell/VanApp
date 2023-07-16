@@ -15,7 +15,7 @@ export default function VanDetail(){
     const [vandata, setVandata] = useState({})
     const [loading, setLoading] = useState(true)
     const location = useLocation()
-    console.log(location)
+   
 
 
 
@@ -55,7 +55,10 @@ export default function VanDetail(){
             {!loading ? (
             
             <div className="vanDetail">
-                <Link to=".." relative="path" className="link--back">&larr; back to vans</Link>
+                {/* Here is a good example on how to embed search parameters back to the parent page if they were sent over as part of state in 
+                useLocation. Done using a conditional when assigning the link path. Additional conditional rendering includes changing the params type string to add more
+                description to the back search link*/}
+                <Link to={`..${location.state.search ? location.state.search:''}`} relative="path" className="link--back">&larr; back to {location.state.type ? location.state.type : 'all'} vans</Link>
                 <img src={vandata.imageUrl} className="vanDetail--image" alt=""/>
                 <VanType type={vandata.type}
                         color={vandata.type}/>
