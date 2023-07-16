@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import VanType from "../../Components/VanType";
 import { Outlet, NavLink } from "react-router-dom";
@@ -11,6 +11,7 @@ import { Outlet, NavLink } from "react-router-dom";
 export default function HostVanDetail(){
 
     const params = useParams()
+    const location = useLocation()
 
     const [vandata, setVandata] = useState([])
     const [loading, setLoading] = useState(true)
@@ -45,7 +46,9 @@ export default function HostVanDetail(){
         {!loading && <>
             <br/>
             <br/>
-            <Link to=".." relative="path" className="link--back">&larr; back to vans</Link>
+            <Link   to=".." 
+                    relative="path" 
+                    className="link--back">&larr; back to vans</Link>
             <div className="HostVanDetail">
                 <div className="HostVanDetailHeader">
                     <img src={vandata.imageUrl} className="HostVanDetailImage" alt=""/>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams,useLocation } from 'react-router-dom';
 import VanType from '.././Components/VanType'
 
 
@@ -12,6 +12,7 @@ export default function Vans(){
     const [searchParams, setSearchParams] = useSearchParams()
     const [vansdata, setVansdata] = useState([])
     const [loading, setLoading] = useState(true)
+    const location = useLocation()
     
     const typeFilter = searchParams.get('type')
 
@@ -47,7 +48,12 @@ export default function Vans(){
         const displayedVans = typeFilter ?  vansdata.filter(van=>{return(van.type.toLowerCase()===typeFilter.toLowerCase())}) : vansdata
         const vansList = displayedVans.map((instancedata, index)=>{
             return(
-                <Link to={`${instancedata.id}`} className="vancard grid-item" key={instancedata.id}>
+                <Link   to={`${instancedata.id}`} 
+                        className="vancard grid-item" 
+                        key={instancedata.id}
+                        state={{search: searchParams.toString()}} /* This is how to pass 'information' to the new page from this page. 
+                        It has to retrieve it using useLocation hook */
+                        >
                     <img src={instancedata.imageUrl} className="vancard--image" alt="vanpic"></img>
                     <div className="vancard--content">
                         <div style={{display:"flex", fleDirection:"row"}}>

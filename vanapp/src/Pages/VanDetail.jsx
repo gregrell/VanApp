@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
@@ -9,11 +9,14 @@ import VanType from '.././Components/VanType'
 
 
 
-export default function VanDetail(props){
+export default function VanDetail(){
 
     const params = useParams()
     const [vandata, setVandata] = useState({})
     const [loading, setLoading] = useState(true)
+    const location = useLocation()
+    console.log(location)
+
 
 
     useEffect(()=>{
