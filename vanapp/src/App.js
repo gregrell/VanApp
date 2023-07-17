@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import Vans from './Pages/Vans';
 import VanDetail from './Pages/VanDetail';
 import Layout from './Components/Layout';
+import NotFound404 from './Components/NotFound404';
 import Dashboard from './Pages/Host/Dashboard';
 import Income from './Pages/Host/Income';
 import Reviews from './Pages/Host/Reviews';
@@ -27,6 +28,7 @@ function App() {
        <BrowserRouter> 
           <Routes>
             <Route path="/" element={<Layout/>}>
+              <Route path="*" element={<NotFound404/>}/>  {/* This is the catch all route 404 not found */}
               <Route index element={<Home/>}/>
               <Route path="/about" element={<About/>}/>
               <Route path="/vans" element={<Vans/>}/>
