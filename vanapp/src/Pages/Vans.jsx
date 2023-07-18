@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams,useLocation } from 'react-router-dom';
 import VanType from '.././Components/VanType'
-import { type } from "@testing-library/user-event/dist/type";
+import { getVans } from "../api";
 
 
 
@@ -13,28 +13,31 @@ export default function Vans(){
     const [searchParams, setSearchParams] = useSearchParams()
     const [vansdata, setVansdata] = useState([])
     const [loading, setLoading] = useState(true)
+    const [err, setErr] = useState(null)
     const location = useLocation()
     
     const typeFilter = searchParams.get('type')
 
     useEffect(()=>{
-        fetch('/api/vans')
-        .then(response =>{
-            if(response.ok){
-                return response.json()
+        async function loadVans(){
+            setLoading(true)
+            try{
+                const data = await getVans()
+                setVansdata(data)
             }
-            throw response;    
-        })
-        .then(data=>{           
-            setVansdata(data.vans)
-        })
-        .catch(error=>{
-            console.error("Error fetching data", error)
-        })
-        .finally(()=>{
-            setLoading(false)
-        })
+            catch(err){
+                setErr(err)
+            }
+            finally{
+                setLoading(true)
+            }
+            
+        }
+        loadVans()
+       
     }, [])
+
+    
 
         /* 
         description:"The Modest Explorer is a van designed to get you out of the house and into nature. This beauty is equipped with solar panels, a composting toilet, a water tank and kitchenette. The idea is that you can pack up your home and escape for a weekend or even longer!"
@@ -80,6 +83,11 @@ export default function Vans(){
 
         }
         
+    if(err){
+        return( <>
+                    <h1>There was an error: {err.message}</h1>
+                </>)
+    }    
 
     return(
         <div className="vanspage">
