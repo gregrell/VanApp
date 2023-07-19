@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom'
 import About from './Pages/About';
 import Home from './Pages/Home';
 import Vans from './Pages/Vans';
@@ -20,14 +20,9 @@ import HostVanDetailPricing from './Pages/Host/VanDetails/HostVanDetailPricing'
 import HostVanDetailPhotos from './Pages/Host/VanDetails/HostVanDetailPhotos'
 
 
-
-
-function App() {
-  return (
-    <div className="App">
-       <BrowserRouter> 
-          <Routes>
-            <Route path="/" element={<Layout/>}>
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout/>}>
               <Route path="*" element={<NotFound404/>}/>  {/* This is the catch all route 404 not found */}
               <Route index element={<Home/>}/>
               <Route path="/about" element={<About/>}/>
@@ -45,8 +40,15 @@ function App() {
                 <Route path="reviews" element={<Reviews/>}/>
               </Route>
             </Route>
-          </Routes>
-        </BrowserRouter>
+
+  )
+)
+
+
+function App() {
+  return (
+    <div className="App">
+      <RouterProvider router={router}/>      
     </div>
   );
 }
