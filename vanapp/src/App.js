@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import {BrowserRouter, Routes, Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom'
+import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom'
 import About from './Pages/About';
 import Home from './Pages/Home';
 import Vans from './Pages/Vans';
@@ -12,12 +12,14 @@ import Income from './Pages/Host/Income';
 import Reviews from './Pages/Host/Reviews';
 import HostVans from './Pages/Host/HostVans';
 import HostVanDetail from './Pages/Host/HostVanDetail';
+import Error from './Components/Error';
 
 import "./server"
 import HostLayout from './Pages/Host/HostLayout';
 import HostVanDetailDetails from './Pages/Host/VanDetails/HostVanDetailDetails'
 import HostVanDetailPricing from './Pages/Host/VanDetails/HostVanDetailPricing'
 import HostVanDetailPhotos from './Pages/Host/VanDetails/HostVanDetailPhotos'
+import { loader as vansLoader } from './Pages/Vans';
 
 
 const router = createBrowserRouter(
@@ -26,7 +28,7 @@ const router = createBrowserRouter(
               <Route path="*" element={<NotFound404/>}/>  {/* This is the catch all route 404 not found */}
               <Route index element={<Home/>}/>
               <Route path="/about" element={<About/>}/>
-              <Route path="/vans" element={<Vans/>}/>
+              <Route path="/vans" element={<Vans/>} loader={vansLoader} errorElement={<Error/>}/>
               <Route path="/vans/:id" element={<VanDetail/>}/>
               <Route path="host" element={<HostLayout/>}>
                 <Route index element={<Dashboard/>}/>

@@ -1,43 +1,25 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link, useSearchParams,useLocation } from 'react-router-dom';
+import { Link, useSearchParams, useLocation, useLoaderData } from 'react-router-dom';
 import VanType from '.././Components/VanType'
 import { getVans } from "../api";
 
+/* This page is an example of using a data loader instead of useEffect */
 
-
+export function loader(){
+    return getVans()
+}
 
 
 export default function Vans(){
 
     const [searchParams, setSearchParams] = useSearchParams()
-    const [vansdata, setVansdata] = useState([])
-    const [loading, setLoading] = useState(true)
     const [err, setErr] = useState(null)
     const location = useLocation()
-    
+    const vansdata = useLoaderData()
     const typeFilter = searchParams.get('type')
 
-    useEffect(()=>{
-        async function loadVans(){
-            setLoading(true)
-            try{
-                const data = await getVans()
-                setVansdata(data)
-            }
-            catch(err){
-                setErr(err)
-            }
-            finally{
-                setLoading(true)
-            }
-            
-        }
-        loadVans()
-       
-    }, [])
 
-    
 
         /* 
         description:"The Modest Explorer is a van designed to get you out of the house and into nature. This beauty is equipped with solar panels, a composting toilet, a water tank and kitchenette. The idea is that you can pack up your home and escape for a weekend or even longer!"
@@ -123,8 +105,7 @@ export default function Vans(){
             </div>
 
             <div className="vansgrid">
-                {!loading && vansList }
-                {loading && <p>LOADING...</p>}
+                { vansList }
             </div>
            
             
