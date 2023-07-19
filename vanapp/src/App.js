@@ -24,7 +24,7 @@ import { loader as vansLoader } from './Pages/Vans';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout/>}>
+            <Route path="/" element={<Layout/>}>
               <Route path="*" element={<NotFound404/>}/>  {/* This is the catch all route 404 not found */}
               <Route index element={<Home/>}/>
               <Route path="/about" element={<About/>}/>
