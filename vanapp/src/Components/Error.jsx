@@ -1,4 +1,8 @@
 import React from "react";
+
+/* This component is a good example on using RouteError when an error is thrown
+from a loader in a component being loaded by a data route loadeer */
+
 import { useRouteError } from "react-router-dom";
 
 

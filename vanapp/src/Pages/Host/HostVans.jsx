@@ -1,34 +1,21 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import HostVan from "../../Components/HostVan";
+import { getHostVans } from "../../api";
 
+
+
+export function HostVansloader(){
+    //throw new Error("Host Vans load error")
+    return getHostVans()
+}
 
 
 export default function NavVans(){
-    const [vansdata, setVansdata] = useState([])
-    const [loading, setLoading] = useState(true)
+   
+    const vansdata = useLoaderData()
 
 
-
-    useEffect(()=>{
-        fetch(`/api/host/vans`)
-        .then(response =>{
-            if(response.ok){
-                return response.json()
-            }
-            throw response;    
-        })
-        .then(data=>{
-            setVansdata(data.vans)
-        })
-        .catch(error=>{
-            console.error("Error fetching data", error)
-        })
-        .finally(()=>{
-            setLoading(false)
-        })
-
-    },[])
 
     // server.create("van", 
     // { id: "6", 
@@ -56,13 +43,12 @@ export default function NavVans(){
 
 
 
-
     return(
-        <>  {loading && <p>Loading</p>}
-            {!loading && <div>
+        <>  
+            <div>
                 <h1>Your Listed Vans</h1>
                 {vansList}
-            </div>}
+            </div>
         </>
     )
 }
