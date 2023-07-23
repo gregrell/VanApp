@@ -6,13 +6,14 @@ import Home from './Pages/Home';
 import Vans from './Pages/Vans';
 import VanDetail from './Pages/VanDetail';
 import Layout from './Components/Layout';
-import NotFound404 from './Components/NotFound404';
+import NotFound404 from './Pages/NotFound404';
 import Dashboard from './Pages/Host/Dashboard';
 import Income from './Pages/Host/Income';
 import Reviews from './Pages/Host/Reviews';
 import HostVans from './Pages/Host/HostVans';
 import HostVanDetail from './Pages/Host/HostVanDetail';
-import Error from './Components/Error';
+import Error from './Components/Error'
+import Login from './Pages/Login';
 
 import "./server"
 import HostLayout from './Pages/Host/HostLayout';
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
               <Route path="/about" element={<About/>}/>
               <Route path="/vans" element={<Vans/>} loader={vansLoader} errorElement={<Error/>}/>
               <Route path="/vans/:id" element={<VanDetail/>}/>
+              <Route path="/login" element={<Login/>}/>
               <Route path="host" element={<HostLayout/>}>
                 <Route index element={<Dashboard/>}/>
                 <Route path="income" element={<Income/>}/>
