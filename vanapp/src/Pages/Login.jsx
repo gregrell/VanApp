@@ -7,7 +7,7 @@ export default function Login(){
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log(e)
+        console.log(formState)
     }
 
     function handleChange(e){
@@ -17,11 +17,6 @@ export default function Login(){
                 [name]:value  
         }))
     }
-
-
-
-
-
 
 
     return(
