@@ -5,7 +5,9 @@ import VanType from "../../Components/VanType";
 import { Outlet, NavLink } from "react-router-dom";
 
 
-
+export async function hostVanDetailLoader(){
+    return null
+}
 
 
 export default function HostVanDetail(){

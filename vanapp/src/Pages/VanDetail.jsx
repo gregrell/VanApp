@@ -6,7 +6,10 @@ import { Link } from 'react-router-dom';
 import VanType from '.././Components/VanType'
 
 
-
+export async function vanDetailLoader({params}){
+    console.log(params)
+    return null
+}
 
 
 export default function VanDetail(){

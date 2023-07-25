@@ -1,5 +1,10 @@
 import React from "react";
 
+export async function hostIncomeLoader(){
+    return null
+}
+
+
 export default function Income(){
     return(
         <div>

@@ -5,7 +5,7 @@ import { getHostVans } from "../../api";
 
 
 
-export function HostVansloader(){
+export async function HostVansloader(){
     //throw new Error("Host Vans load error")
     return getHostVans()
 }

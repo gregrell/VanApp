@@ -1,6 +1,11 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
 
+export async function hostVanDetailDetailsLoader(){
+    return null
+}
+
+
 export default function HostVanDetailDetails(props){
 
     const currentVan  = useOutletContext()

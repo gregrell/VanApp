@@ -6,7 +6,7 @@ import { getVans } from "../api";
 
 /* This page is an example of using a data loader instead of useEffect */
 
-export function loader(){
+export async function loader(){
     //throw new Error("Vans load error")
     return getVans()
 }

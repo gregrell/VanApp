@@ -1,5 +1,10 @@
 import React from "react";
 
+export async function reviewsLoader(){
+    return null
+}
+
+
 export default function Reviews(){
     return(
         <div>

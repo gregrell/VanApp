@@ -4,26 +4,31 @@ import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} fr
 import About from './Pages/About';
 import Home from './Pages/Home';
 import Vans from './Pages/Vans';
-import VanDetail from './Pages/VanDetail';
+import VanDetail, { vanDetailLoader } from './Pages/VanDetail';
 import Layout from './Components/Layout';
 import NotFound404 from './Pages/NotFound404';
-import Dashboard from './Pages/Host/Dashboard';
-import Income from './Pages/Host/Income';
-import Reviews from './Pages/Host/Reviews';
+import Dashboard, { hostDashboardLoader } from './Pages/Host/Dashboard';
+import Income, { hostIncomeLoader } from './Pages/Host/Income';
+import Reviews, { reviewsLoader } from './Pages/Host/Reviews';
 import HostVans from './Pages/Host/HostVans';
-import HostVanDetail from './Pages/Host/HostVanDetail';
+import HostVanDetail, { hostVanDetailLoader } from './Pages/Host/HostVanDetail';
 import Error from './Components/Error'
 import Login from './Pages/Login';
 
 import "./server"
 import HostLayout from './Pages/Host/HostLayout';
-import HostVanDetailDetails from './Pages/Host/VanDetails/HostVanDetailDetails'
-import HostVanDetailPricing from './Pages/Host/VanDetails/HostVanDetailPricing'
-import HostVanDetailPhotos from './Pages/Host/VanDetails/HostVanDetailPhotos'
+import HostVanDetailDetails, { hostVanDetailDetailsLoader } from './Pages/Host/VanDetails/HostVanDetailDetails'
+import HostVanDetailPricing, { hostVanDetailPricingLoader } from './Pages/Host/VanDetails/HostVanDetailPricing'
+import HostVanDetailPhotos, { hostVanDetailPhotosLoader } from './Pages/Host/VanDetails/HostVanDetailPhotos'
+
+import ProtectedLayout from './Components/ProtectedLayout';
+
+
+
+/* Data Loaders Here */
 import { loader as vansLoader } from './Pages/Vans';
 import { HostVansloader } from './Pages/Host/HostVans';
 import { VanDetailLoader } from './Pages/VanDetail';
-
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,18 +37,20 @@ const router = createBrowserRouter(
               <Route index element={<Home/>}/>
               <Route path="/about" element={<About/>}/>
               <Route path="/vans" element={<Vans/>} loader={vansLoader} errorElement={<Error/>}/>
-              <Route path="/vans/:id" element={<VanDetail/>}/>
-              <Route path="/login" element={<Login/>}/>
+              <Route path="/vans/:id" element={<VanDetail/>} loader={vanDetailLoader} errorElement={<Error/>}/>
+              <Route path="/login" element={<Login/>}/>              
               <Route path="host" element={<HostLayout/>}>
-                <Route index element={<Dashboard/>}/>
-                <Route path="income" element={<Income/>}/>
-                <Route path="vans" element={<HostVans/>} loader={HostVansloader} errorElement={<Error/>}/>
-                <Route path="vans/:id" element={<HostVanDetail/>}>
-                  <Route index element={<HostVanDetailDetails/>}/>
-                  <Route path="pricing" element={<HostVanDetailPricing/>}/>
-                  <Route path="photos" element={<HostVanDetailPhotos/>}/>
-                </Route>
-                <Route path="reviews" element={<Reviews/>}/>
+                <Route element={<ProtectedLayout/>}>      {/* Protected routes start here */}
+                  <Route index element={<Dashboard/>} loader={hostDashboardLoader} errorElement={<Error/>}/>
+                  <Route path="income" element={<Income/>} loader={hostIncomeLoader} errorElement={<Error/>}/>
+                  <Route path="vans" element={<HostVans/>} loader={HostVansloader} errorElement={<Error/>}/>
+                  <Route path="vans/:id" element={<HostVanDetail/>} loader={hostVanDetailLoader} errorElement={<Error/>}>
+                    <Route index element={<HostVanDetailDetails/>} loader={hostVanDetailDetailsLoader} errorElement={<Error/>}/>
+                    <Route path="pricing" element={<HostVanDetailPricing/>} loader={hostVanDetailPricingLoader} errorElement={<Error/>}/>
+                    <Route path="photos" element={<HostVanDetailPhotos/>} loader={hostVanDetailPhotosLoader} errorElement={<Error/>}/>
+                  </Route>
+                  <Route path="reviews" element={<Reviews/>} loader={reviewsLoader} errorElement={<Error/>}/>
+                </Route>                                  {/* Protected routes end here */}
               </Route>
             </Route>
 
