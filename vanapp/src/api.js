@@ -19,9 +19,9 @@ export async function getVan(vanid){
             status: res.status
         }
     }
+    
     const data = await res.json()
-    console.log(data.van)
-    return data.van
+    return data.vans 
 }
 
 export async function getHostVans(){

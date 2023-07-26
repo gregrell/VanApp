@@ -28,7 +28,6 @@ import ProtectedLayout from './Components/ProtectedLayout';
 /* Data Loaders Here */
 import { loader as vansLoader } from './Pages/Vans';
 import { HostVansloader } from './Pages/Host/HostVans';
-import { VanDetailLoader } from './Pages/VanDetail';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

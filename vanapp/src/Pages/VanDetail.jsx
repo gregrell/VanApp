@@ -1,28 +1,32 @@
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import { getVan } from "../api";
 
 import VanType from '.././Components/VanType'
 
 
 export async function vanDetailLoader({params}){
-    console.log(params)
-    return null
+    const van = getVan(params.id)
+    return van
 }
 
 
 export default function VanDetail(){
 
-    const params = useParams()
-    const [vandata, setVandata] = useState({})
-    const [loading, setLoading] = useState(true)
+
+    //const [vandata, setVandata] = useState({})
     const location = useLocation()
+
+    const vandata = useLoaderData()
+
+
    
 
 
 
-    useEffect(()=>{
+  /*   useEffect(()=>{
         fetch(`/api/vans/${params.id}`)
         .then(response =>{
             if(response.ok){
@@ -39,7 +43,7 @@ export default function VanDetail(){
         .finally(()=>{
             setLoading(false)
         })
-    }, [params.id])
+    }, [params.id]) */
 
  /* 
         description:"The Modest Explorer is a van designed to get you out of the house and into nature. This beauty is equipped with solar panels, a composting toilet, a water tank and kitchenette. The idea is that you can pack up your home and escape for a weekend or even longer!"
@@ -55,7 +59,7 @@ export default function VanDetail(){
         <div>
 
 
-            {!loading ? (
+           
             
             <div className="vanDetail">
                 {/* Here is a good example on how to embed search parameters back to the parent page if they were sent over as part of state in 
@@ -74,7 +78,7 @@ export default function VanDetail(){
                     Rent this van
                 </div>
             </div> 
-            ) : <div><p>Loading...</p></div>}
+           
 
 
         </div>
