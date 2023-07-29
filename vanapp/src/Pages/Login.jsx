@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { loginUser } from "../api";
 
 
 /** Here's an example on how to send a 'message' from something that is redirecting to this login page
@@ -14,12 +15,22 @@ export async function loader({request}){
 }
 
 export default function Login(){
-    const [formState, setFormState] = useState({username:"",password:""})
+    const [formState, setFormState] = useState({email:"",password:""})
     const message=useLoaderData()
 
     function handleSubmit(e){
-        e.preventDefault()
-        console.log(formState)
+        e.preventDefault()      
+        const loginResult = loginUser(formState)
+            .then(data=>{
+                console.log(data)
+            })
+            .catch(e=>{
+                console.log(e)
+            })
+            
+        
+       
+
     }
 
     function handleChange(e){
@@ -31,14 +42,17 @@ export default function Login(){
     }
 
 
+    /** Pretty much the only FORM based input */
+
     return(
         <>
-            {message && <h1>{message}</h1>}
-            <h1>Sign in to Your Account</h1>
             <form onSubmit={handleSubmit} className="form">
+            <h1 className="form--item">Sign in to Your Account</h1>
+            {message && <h3 className="red form--item">{message}</h3>}
+
                 <input  className="form--field form--field--top"    
                         type='text'
-                        name='username'
+                        name='email'
                         placeholder="email"
                         onChange={handleChange}></input>
                 <input  className="form--field form--field--bottom"

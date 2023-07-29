@@ -50,3 +50,17 @@ export async function getHostVan(vanid){
     return data.vans
 }
 
+export async function loginUser(creds){
+    const body=JSON.stringify(creds)
+    const res = await fetch("/api/login", {method:"post", body: body})
+    const data = await res.json()
+    if(!res.ok){
+        throw{
+            message: data.message,
+            statusText: res.statusText,
+            status:res.status
+        }
+    }
+
+    return data
+}
