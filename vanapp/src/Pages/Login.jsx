@@ -3,8 +3,12 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 
+/** Here's an example on how to send a 'message' from something that is redirecting to this login page
+ * and storing that message in the URL parameters as 'message'. You can first extract it in a loader
+ * call, then pass it back to react routher via 'loader' then it's used in the component by useLoaderData
+ */
 
-export function loader({request}){
+export async function loader({request}){
     let params=new URL(request.url).search
     return new URLSearchParams(params).get('message')
 }
@@ -29,9 +33,9 @@ export default function Login(){
 
     return(
         <>
+            {message && <h1>{message}</h1>}
             <h1>Sign in to Your Account</h1>
             <form onSubmit={handleSubmit} className="form">
-                {message && <p>{message}</p>}
                 <input  className="form--field form--field--top"    
                         type='text'
                         name='username'
