@@ -2,16 +2,19 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import HostVan from "../../Components/HostVan";
 import { getHostVans } from "../../api";
+import { requireAuth } from "../../utils";
 
 
 
 export async function HostVansloader(){
-    //throw new Error("Host Vans load error")
+    await requireAuth()
     return getHostVans()
 }
 
 
+
 export default function NavVans(){
+
    
     const vansdata = useLoaderData()
 

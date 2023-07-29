@@ -37,4 +37,16 @@ export async function getHostVans(){
     return data.vans
 }
 
+export async function getHostVan(vanid){
+    const res = await fetch(`/api/host/vans/${vanid}`)
+    if(!res.ok){
+        throw{
+            message: 'failed to fetch host van',
+            statusText: res.statusText,
+            status: res.status
+        }        
+    }
+    const data = await res.json()
+    return data.vans
+}
 

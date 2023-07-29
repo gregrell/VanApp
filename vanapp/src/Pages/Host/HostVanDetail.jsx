@@ -1,51 +1,34 @@
 import React from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link,  useLocation } from "react-router-dom";
+
 import VanType from "../../Components/VanType";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useLoaderData } from "react-router-dom";
+import { getHostVan } from "../../api";
+import { requireAuth } from "../../utils";
 
+export async function hostVanDetailLoader({params}){
+    await requireAuth()
+    const retval = getHostVan(params.id)
+    return retval
 
-export async function hostVanDetailLoader(){
-    return null
 }
 
 
 export default function HostVanDetail(){
 
-    const params = useParams()
     const location = useLocation()
 
-    const [vandata, setVandata] = useState([])
-    const [loading, setLoading] = useState(true)
+    
+    const vandata = useLoaderData()[0]
 
 
-
-    useEffect(()=>{
-        fetch(`/api/host/vans/${params.id}`)
-        .then(response =>{
-            if(response.ok){
-                return response.json()
-            }
-            throw response;    
-        })
-        .then(data=>{
-            setVandata(data.vans[0])
-        })
-        .catch(error=>{
-            console.error("Error fetching data", error)
-        })
-        .finally(()=>{
-            setLoading(false)
-        })
-
-    },[])
-
+   
 
 
     return(
         <>
-        {loading && <p>Loading</p>}
-        {!loading && <>
+     
+        <>
             <br/>
             <br/>
             <Link   to=".." 
@@ -67,7 +50,7 @@ export default function HostVanDetail(){
                 </nav>
                 <Outlet context={vandata}/>
             </div>
-        </>}
+        </>
         </>
     )
 }
