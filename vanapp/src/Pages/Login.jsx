@@ -1,9 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
+
+
+export function loader({request}){
+    let params=new URL(request.url).search
+    return new URLSearchParams(params).get('message')
+}
 
 export default function Login(){
     const [formState, setFormState] = useState({username:"",password:""})
+    const message=useLoaderData()
 
     function handleSubmit(e){
         e.preventDefault()
@@ -23,6 +31,7 @@ export default function Login(){
         <>
             <h1>Sign in to Your Account</h1>
             <form onSubmit={handleSubmit} className="form">
+                {message && <p>{message}</p>}
                 <input  className="form--field form--field--top"    
                         type='text'
                         name='username'

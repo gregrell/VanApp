@@ -13,7 +13,7 @@ import Reviews, { reviewsLoader } from './Pages/Host/Reviews';
 import HostVans from './Pages/Host/HostVans';
 import HostVanDetail, { hostVanDetailLoader } from './Pages/Host/HostVanDetail';
 import Error from './Components/Error'
-import Login from './Pages/Login';
+import Login, {loader as loginLoader} from './Pages/Login';
 
 import "./server"
 import HostLayout from './Pages/Host/HostLayout';
@@ -37,7 +37,7 @@ const router = createBrowserRouter(
               <Route path="/about" element={<About/>}/>
               <Route path="/vans" element={<Vans/>} loader={vansLoader} errorElement={<Error/>}/>
               <Route path="/vans/:id" element={<VanDetail/>} loader={vanDetailLoader} errorElement={<Error/>}/>
-              <Route path="/login" element={<Login/>}/>              
+              <Route path="/login" element={<Login/>} loader={loginLoader}/>              
               <Route path="host" element={<HostLayout/>}>
                 <Route element={<ProtectedLayout/>}>      {/* Protected routes start here */}
                   <Route index element={<Dashboard/>} loader={hostDashboardLoader} errorElement={<Error/>}/>
