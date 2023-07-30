@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate, Form } from "react-router-dom";
 import { loginUser } from "../api";
 
 
@@ -14,6 +14,19 @@ export async function loader({request}){
     return new URLSearchParams(params).get('message')
 }
 
+/* Here's how to use 'action' function with components that have Forms.. use Form from react-router-dom. when it gets submitted the 
+data is stored in obj.request.formData() */
+
+export async function action({request}){
+    const formData = await request.formData()
+    const email = formData.get('email')
+    const password = formData.get('password')
+    const userData = await loginUser({email:email, password:password})
+    console.log(userData)
+    
+    return null
+}
+
 export default function Login(){
     const [formState, setFormState] = useState({email:"",password:""})
     const [status, setStatus] = useState(false)
@@ -21,7 +34,7 @@ export default function Login(){
     const message=useLoaderData()
     const navigate = useNavigate()
 
-    function handleSubmit(e){
+   /*  function handleSubmit(e){
         e.preventDefault()   
         setStatus(true)
         setError(null)
@@ -33,7 +46,7 @@ export default function Login(){
                 previous page replace the login page in the history stack so that if the user hits back from the '/host' page, it will navigate to the
                 page the user was on BEFORE the login page */
 
-            })
+  /*           })
             .catch(e=>{
                 console.log(e)
                 setError(e)
@@ -42,22 +55,22 @@ export default function Login(){
             setStatus(false)
            })       
 
-    }
+    } */ 
 
-    function handleChange(e){
+  /*   function handleChange(e){
         const {name, value} = e.target
         setFormState(old=>({
                 ...old,
                 [name]:value  
         }))
-    }
+    } */
 
 
     /** Pretty much the only FORM based input */
 
     return(
         <>
-            <form onSubmit={handleSubmit} className="form">
+          {/*   <form onSubmit={handleSubmit} className="form">
             <h1 className="form--item">Sign in to Your Account</h1>
             {error && <h3 className="form--item red">Error: {error.message}</h3>}
             {message && <h3 className="red form--item">{message}</h3>}
@@ -78,7 +91,32 @@ export default function Login(){
                         disabled={status ? true:false}>
                             {status ? "Signing In...":"Sign In"}</button>
 
-            </form>
+            </form> */}
+
+
+            <Form   className="form"
+                    method="post">
+            <h1 className="form--item">Sign in to Your Account</h1>
+            {error && <h3 className="form--item red">Error: {error.message}</h3>}
+            {message && <h3 className="red form--item">{message}</h3>}
+
+                <input  className="form--field form--field--top"    
+                        type='text'
+                        name='email'
+                        placeholder="email"
+                        ></input>
+                <input  className="form--field form--field--bottom"
+                        type='password'
+                        name='password'
+                        placeholder="password"
+                        ></input>
+
+                <button type="submit"
+                        className="form--button"
+                        disabled={status ? true:false}>
+                            {status ? "Signing In...":"Sign In"}</button>
+
+            </Form>
         </>
     )
 }
