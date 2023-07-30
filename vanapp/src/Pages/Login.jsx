@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { loginUser } from "../api";
 
 
@@ -16,20 +16,31 @@ export async function loader({request}){
 
 export default function Login(){
     const [formState, setFormState] = useState({email:"",password:""})
+    const [status, setStatus] = useState(false)
+    const [error, setError] = useState(null)
     const message=useLoaderData()
+    const navigate = useNavigate()
 
     function handleSubmit(e){
-        e.preventDefault()      
-        const loginResult = loginUser(formState)
+        e.preventDefault()   
+        setStatus(true)
+        setError(null)
+
+        loginUser(formState)
             .then(data=>{
                 console.log(data)
+                navigate('/host' , {replace: true}) /* Look at this. Here's another way to programatically move to a new route, and optionally have the
+                previous page replace the login page in the history stack so that if the user hits back from the '/host' page, it will navigate to the
+                page the user was on BEFORE the login page */
+
             })
             .catch(e=>{
                 console.log(e)
+                setError(e)
             })
-            
-        
-       
+           .finally(()=>{
+            setStatus(false)
+           })       
 
     }
 
@@ -48,6 +59,7 @@ export default function Login(){
         <>
             <form onSubmit={handleSubmit} className="form">
             <h1 className="form--item">Sign in to Your Account</h1>
+            {error && <h3 className="form--item red">Error: {error.message}</h3>}
             {message && <h3 className="red form--item">{message}</h3>}
 
                 <input  className="form--field form--field--top"    
@@ -62,7 +74,9 @@ export default function Login(){
                         onChange={handleChange}></input>
 
                 <button type="submit"
-                        className='form--button'>Sign In</button>
+                        className="form--button"
+                        disabled={status ? true:false}>
+                            {status ? "Signing In...":"Sign In"}</button>
 
             </form>
         </>
