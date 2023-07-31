@@ -1,7 +1,7 @@
 import React from "react";
 import { requireAuth } from "../../utils";
-export async function hostIncomeLoader(){
-    await requireAuth()
+export async function hostIncomeLoader({request}){
+    await requireAuth(request)
 
     return null
 }

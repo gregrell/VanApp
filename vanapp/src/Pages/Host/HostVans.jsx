@@ -6,8 +6,8 @@ import { requireAuth } from "../../utils";
 
 
 
-export async function HostVansloader(){
-    await requireAuth()
+export async function HostVansloader({request}){
+    await requireAuth(request)
     return getHostVans()
 }
 

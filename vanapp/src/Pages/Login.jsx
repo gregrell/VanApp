@@ -11,7 +11,7 @@ import { loginUser } from "../api";
 
 export async function loader({request}){
     let params=new URL(request.url).search
-    return new URLSearchParams(params).get('message')
+    return  new URLSearchParams(params).get('message')
 }
 
 /* Here's how to use 'action' function with components that have Forms.. use Form from react-router-dom. when it gets submitted the 
@@ -21,10 +21,12 @@ export async function action({request}){
     const formData = await request.formData()
     const email = formData.get('email')
     const password = formData.get('password')
+    const pathname =  new URL(request.url).searchParams.get('pathname')
+
     try{
         const userData = await loginUser({email:email, password:password})
         localStorage.setItem("loggedIn", true)
-        return redirect('/host')
+        return redirect(pathname ? pathname:'/host')
     }
     catch(e){
         return e.message

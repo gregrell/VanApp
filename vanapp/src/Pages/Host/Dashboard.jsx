@@ -2,8 +2,8 @@ import React from "react";
 import { requireAuth } from "../../utils";
 
 
-export async function hostDashboardLoader(){
-    await requireAuth()
+export async function hostDashboardLoader({request}){
+    await requireAuth(request)
     return null
 }
 
