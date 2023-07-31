@@ -1,6 +1,6 @@
 import React from "react";
-import { useState } from "react";
-import { useLoaderData, useNavigate, Form } from "react-router-dom";
+import { useState, setItem } from "react";
+import { useLoaderData, useNavigate, Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { loginUser } from "../api";
 
 
@@ -21,19 +21,27 @@ export async function action({request}){
     const formData = await request.formData()
     const email = formData.get('email')
     const password = formData.get('password')
-    const userData = await loginUser({email:email, password:password})
-    console.log(userData)
+    try{
+        const userData = await loginUser({email:email, password:password})
+        localStorage.setItem("loggedIn", true)
+        return redirect('/host')
+    }
+    catch(e){
+        return e.message
+    }
+
     
-    return null
+    //return null
 }
 
 export default function Login(){
-    const [formState, setFormState] = useState({email:"",password:""})
-    const [status, setStatus] = useState(false)
-    const [error, setError] = useState(null)
+    //const [formState, setFormState] = useState({email:"",password:""})
+    //const [status, setStatus] = useState(false)
     const message=useLoaderData()
-    const navigate = useNavigate()
+    //const navigate = useNavigate()
 
+    const error = useActionData()
+    const navigation = useNavigation() //this object returns information the current processing state of forms as well as other under the hood status
    /*  function handleSubmit(e){
         e.preventDefault()   
         setStatus(true)
@@ -95,9 +103,10 @@ export default function Login(){
 
 
             <Form   className="form"
-                    method="post">
+                    method="post"
+                    replace> {/* Take a look, this is how you replace the login page in the history stack when the form is submitted */}
             <h1 className="form--item">Sign in to Your Account</h1>
-            {error && <h3 className="form--item red">Error: {error.message}</h3>}
+            {error && <h3 className="form--item red">Error: {error}</h3>}
             {message && <h3 className="red form--item">{message}</h3>}
 
                 <input  className="form--field form--field--top"    
@@ -113,8 +122,8 @@ export default function Login(){
 
                 <button type="submit"
                         className="form--button"
-                        disabled={status ? true:false}>
-                            {status ? "Signing In...":"Sign In"}</button>
+                        disabled={navigation.state==='submitting' ? true:false}>
+                            {navigation.state==='submitting' ? "Signing In...":"Sign In"}</button>
 
             </Form>
         </>
