@@ -1,6 +1,5 @@
 import React from "react";
-import { useParams, useLocation, useLoaderData } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useLocation, useLoaderData } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { getVan } from "../api";
 
@@ -18,43 +17,10 @@ export default function VanDetail(){
 
     //const [vandata, setVandata] = useState({})
     const location = useLocation()
-    const params = useParams()
-    console.log(params)
 
     const vandata = useLoaderData()
 
 
-   
-
-
-
-  /*   useEffect(()=>{
-        fetch(`/api/vans/${params.id}`)
-        .then(response =>{
-            if(response.ok){
-                return response.json()
-            }
-            throw response;    
-        })
-        .then(data=>{
-            setVandata(data.vans)
-        })
-        .catch(error=>{
-            console.error("Error fetching data", error)
-        })
-        .finally(()=>{
-            setLoading(false)
-        })
-    }, [params.id]) */
-
- /* 
-        description:"The Modest Explorer is a van designed to get you out of the house and into nature. This beauty is equipped with solar panels, a composting toilet, a water tank and kitchenette. The idea is that you can pack up your home and escape for a weekend or even longer!"
-        id:"1"
-        imageUrl:"https://assets.scrimba.com/advanced-react/react-router/modest-explorer.png"
-        name:"Modest Explorer"
-        price:60
-        type:"simple"
-        */ 
 
 
     return(

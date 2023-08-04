@@ -37,7 +37,7 @@ const router = createBrowserRouter(
               <Route path="/about" element={<About/>}/>
               <Route path="/vans" element={<Vans/>} loader={vansLoader} errorElement={<Error/>}/>
               <Route path="/vans/:id" element={<VanDetail/>} loader={vanDetailLoader} errorElement={<Error/>}/>
-              <Route path="/login" element={<Login/>} loader={loginLoader} action={loginAction}/>              
+              <Route path="/login" element={<Login/>} loader={loginLoader} action={loginAction} errorElement={<Error/>}/>              
               <Route path="host" element={<HostLayout/>}>
                 <Route element={<ProtectedLayout/>}>      {/* Protected routes start here */}
                   <Route index element={<Dashboard/>} loader={hostDashboardLoader} errorElement={<Error/>}/>

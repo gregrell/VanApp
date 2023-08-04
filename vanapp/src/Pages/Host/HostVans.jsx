@@ -17,7 +17,6 @@ export default function NavVans(){
 
    
     const hostVansDataPromise = useLoaderData()
-    console.log(hostVansDataPromise)
 
 
 
@@ -53,10 +52,7 @@ export default function NavVans(){
                 <Suspense fallback={<>Loading</>}>
                     <Await
                         resolve={hostVansDataPromise.hostVans}>
-                        
                         {renderDeferedVanElements}
-
-
                     </Await>
                 </Suspense>
             </div>
