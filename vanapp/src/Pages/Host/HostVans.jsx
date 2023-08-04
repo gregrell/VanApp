@@ -17,10 +17,11 @@ export default function NavVans(){
 
    
     const hostVansDataPromise = useLoaderData()
+    console.log(hostVansDataPromise)
 
 
 
-    function renderVanElements(vansdata){
+    function renderDeferedVanElements(vansdata){ /* Defered promise elements */
         const vansList = vansdata.map((instancedata, index)=>{
             return(
                 <HostVan
@@ -53,7 +54,7 @@ export default function NavVans(){
                     <Await
                         resolve={hostVansDataPromise.hostVans}>
                         
-                        {renderVanElements}
+                        {renderDeferedVanElements}
 
 
                     </Await>
