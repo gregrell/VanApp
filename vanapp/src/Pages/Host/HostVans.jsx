@@ -1,4 +1,4 @@
-import {React, Suspense} from "react";
+import React, {Suspense} from "react";
 import { useLoaderData, defer, Await } from "react-router-dom";
 import HostVan from "../../Components/HostVan";
 import { getHostVans } from "../../api";
@@ -41,17 +41,13 @@ export default function NavVans(){
         )
     }
 
-    
-
-
-
     return(
         <>  
             <div>
                 <h1>Your Listed Vans</h1>
                 <Suspense fallback={<>Loading</>}>
                     <Await
-                        resolve={hostVansDataPromise.hostVans}>
+                        resolve={hostVansDataPromise.hostVans}>                            
                         {renderDeferedVanElements}
                     </Await>
                 </Suspense>
