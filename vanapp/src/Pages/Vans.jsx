@@ -1,38 +1,29 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link, useSearchParams, useLocation, useLoaderData } from 'react-router-dom';
+import { Link, useSearchParams, useLocation, useLoaderData, defer, Await } from 'react-router-dom';
 import VanType from '.././Components/VanType'
 import { getVans } from "../api";
 
 /* This page is an example of using a data loader instead of useEffect */
 
 export async function loader(){
-    //throw new Error("Vans load error")
-    return getVans()
+    return defer({vans: getVans()})
 }
 
 
 export default function Vans(){
 
     const [searchParams, setSearchParams] = useSearchParams()
-    const [err, setErr] = useState(null)
     const location = useLocation()
-    const vansdata = useLoaderData()
-    const typeFilter = searchParams.get('type')
+    const vansPromise = useLoaderData()
+    const typeFilter = searchParams.get('type')        
 
+    function handleFilterClick(filterTypeString){
+        setSearchParams({type:filterTypeString})
 
+    }
 
-        /* 
-        description:"The Modest Explorer is a van designed to get you out of the house and into nature. This beauty is equipped with solar panels, a composting toilet, 
-        a water tank and kitchenette. The idea is that you can pack up your home and escape for a weekend or even longer!"
-        id:"1"
-        imageUrl:"https://assets.scrimba.com/advanced-react/react-router/modest-explorer.png"
-        name:"Modest Explorer"
-        price:60
-        type:"simple"
-        */ 
-
-        /* Here is a good example on how to filter an array of things you want to display in a mapping. */
+    function renderVanElements(vansdata){
         const displayedVans = typeFilter ?  vansdata.filter(van=>{return(van.type.toLowerCase()===typeFilter.toLowerCase())}) : vansdata
         const vansList = displayedVans.map((instancedata, index)=>{
             return(
@@ -62,55 +53,43 @@ export default function Vans(){
 
         })
 
-        function handleFilterClick(filterTypeString){
-            setSearchParams({type:filterTypeString})
 
-        }
-        
-    if(err){
-        return( <>
-                    <h1>There was an error: {err.message}</h1>
-                </>)
-    }    
+        return(
+            <>
+                <div>
+                    <h2>Explore our van options</h2>
+                    <div className='flex pad-10'>              
+                        <VanType color={'filter'} type={'Simple'} handleClickFunction={()=>handleFilterClick('simple')}/>
+                        <VanType color={'filter'} type={'Rugged'} handleClickFunction={()=>handleFilterClick('rugged')}/>                    
+                        <VanType color={'filter'} type={'Luxury'} handleClickFunction={()=>handleFilterClick('luxury')}/>
+                        
+                        {/* Conditonally render the clear filters link by looking to see if the search parameters size is greater than 0
+                        if its zero then render a HIDDEN 'clear filters' text so the filter buttons do not readjust */}
+
+                        {searchParams.size!=0 ? (<Link   to='' 
+                                className="" 
+                                onClick={(event)=>{
+                                    event.preventDefault()
+                                    setSearchParams({})}}>Clear filters
+                        </Link>) : <span style={{visibility:"hidden"}}>Clear filters</span>}
+                    </div>                
+                </div>
+
+                <div className="vansgrid"> {/** Here is the grid of vans **/}
+                    {vansList}                                    
+                </div>
+            </>
+        )
+    }/** END RENDER VANS ELEMENTS USING SUSPEND/AWAIT **/           
+   
 
     return(
         <div className="vanspage">
-            <div>
-                <h2>Explore our van options</h2>
-                <div className='flex pad-10'>
-                {/* <Link to='?type=simple' className="link"><VanType color={'filter'} type={'Simple'}/></Link>
-                <Link to='?type=rugged' className="link"><VanType color={'filter'} type={'Rugged'}/></Link>
-                <Link to='?type=luxury' className="link"><VanType color={'filter'} type={'Luxury'}/></Link>
-                <Link to='.'>Clear Filters</Link> */}
-
-                    {/* here is an example of setting search parameters programatically, disabling the link default event action
-                    and in place using the onclick event to set search parameters. This was changed to take in a click handling function
-                    as prop. */}
-
-                   
-                    <VanType color={'filter'} type={'Simple'} handleClickFunction={()=>handleFilterClick('simple')}/>
-                    <VanType color={'filter'} type={'Rugged'} handleClickFunction={()=>handleFilterClick('rugged')}/>                    
-                    <VanType color={'filter'} type={'Luxury'} handleClickFunction={()=>handleFilterClick('luxury')}/>
-                    
-                    {/* Conditonally render the clear filters link by looking to see if the search parameters size is greater than 0
-                    if its zero then render a HIDDEN 'clear filters' text so the filter buttons do not readjust */}
-
-                    {searchParams.size!=0 ? (<Link   to='' 
-                            className="" 
-                            onClick={(event)=>{
-                                event.preventDefault()
-                                setSearchParams({})}}>Clear filters
-                    </Link>) : <span style={{visibility:"hidden"}}>Clear filters</span>}
-
-                </div>
-                
-            </div>
-
-            <div className="vansgrid">
-                { vansList }
-            </div>
-           
-            
+            <React.Suspense fallback={<>Loading</>}>
+                <Await resolve={vansPromise.vans}>
+                    {renderVanElements}            
+                </Await>
+            </React.Suspense>
         </div>
     )
 }

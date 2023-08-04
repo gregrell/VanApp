@@ -18,6 +18,8 @@ export default function VanDetail(){
 
     //const [vandata, setVandata] = useState({})
     const location = useLocation()
+    const params = useParams()
+    console.log(params)
 
     const vandata = useLoaderData()
 

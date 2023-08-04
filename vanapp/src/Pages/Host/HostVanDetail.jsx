@@ -2,7 +2,7 @@ import React from "react";
 import { Link,  useLocation } from "react-router-dom";
 
 import VanType from "../../Components/VanType";
-import { Outlet, NavLink, useLoaderData } from "react-router-dom";
+import { Outlet, NavLink, useLoaderData, useParams } from "react-router-dom";
 import { getHostVan } from "../../api";
 import { requireAuth } from "../../utils";
 
@@ -17,9 +17,9 @@ export async function hostVanDetailLoader({params, request}){
 export default function HostVanDetail(){
 
     const location = useLocation()
-
     
     const vandata = useLoaderData()[0]
+
 
 
    
